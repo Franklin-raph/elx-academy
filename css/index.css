@@ -419,7 +419,7 @@ section {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 3rem;
-  padding: 20px 60px;
+  padding: 18px 60px;
   background-color: #fff;
 }
 .hero nav button {
@@ -832,6 +832,9 @@ footer .contacts {
 @media screen and (max-width: 992px) {
   .hero-content h1 {
     font-size: 30px;
+  }
+  .logo {
+    width: 30%;
   }
   #courses .topInfo p {
     font-size: 18px;
