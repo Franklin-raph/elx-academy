@@ -1,0 +1,380 @@
+@media screen and (max-width:1200px) {
+    #features {
+
+        .featuresContainer {
+            width: 100%;
+        }
+    }
+}
+
+
+@media screen and (max-width:992px) {
+    .hero {
+
+        &-content {
+
+            h1 {
+                font-size: 30px;
+            }
+        }
+    }
+
+    #courses {
+
+        .topInfo {
+
+            p {
+                font-size: 18px;
+                width: 70%;
+            }
+        }
+    }
+
+    #timeSection {
+        .timeSectionParagraph {
+            font-size: 18px;
+            width: 70%;
+        }
+    }
+
+    #features {
+
+        .featuresContainer {
+            padding: 10px .5rem;
+            width: 90%;
+
+            .feature {
+                width: 90%;
+            }
+        }
+
+        .featuresParagraph {
+            font-size: 18px;
+            width: 70%;
+        }
+    }
+
+    #counter {
+        padding: 50px 25px;
+    }
+
+    footer {
+        flex-direction: column-reverse;
+        gap: 50px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        .links {
+            gap: 7px;
+        }
+    }
+
+    #signupmodal {
+
+        .verifyEmailModal,
+        .error {
+            width: 50%;
+        }
+
+        .loaderContainer {
+
+            .loadingGif {
+                width: 40%;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:700px) {
+
+    .hero {
+        height: 800px;
+        clip-path: polygon(100% 0, 100% 97%, 48% 100%, 0 97%, 0 0);
+
+        &-content {
+            flex-direction: column-reverse;
+            text-align: center;
+
+            h1 {
+                font-size: 30px;
+            }
+
+            img {
+                width: 80%;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .container {
+            padding: 0 10px;
+        }
+    }
+
+    .step-timeline {
+        margin: 50px auto;
+
+        .right-container {
+            left: 0;
+        }
+
+        .left-container .number,
+        .right-container .number {
+            left: 10px;
+        }
+
+        &::after {
+            left: 85px;
+        }
+
+        .step-container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 10px 25px 10px 80px;
+        }
+
+        .left-container-arrow,
+        .right-container-arrow {
+            border-right: 15px solid $primary;
+            border-left: 0;
+            left: -15px;
+        }
+    }
+
+    #courses {
+        .topInfo {
+
+            p {
+                font-size: 16px;
+                width: 90%;
+            }
+        }
+    }
+
+    #timeSection {
+        .timeSectionParagraph {
+            font-size: 16px;
+            width: 90%;
+        }
+    }
+
+    #features {
+
+        .featuresContainer {
+            grid-template-columns: 1fr;
+
+            .feature {
+                width: 100%;
+
+                h3 {
+                    font-size: 18px;
+                }
+
+                p {
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .featuresParagraph {
+            font-size: 16px;
+            width: 90%;
+        }
+    }
+
+    #counter {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 50px;
+        padding: 50px 20px;
+    }
+
+    #signupmodal {
+        .loaderContainer {
+
+            .loadingGif {
+                width: 70%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:600px) {
+    .hero {
+
+        nav {
+            position: relative;
+            padding: 30px;
+            width: 100%;
+
+            button {
+                color: $secondary;
+            }
+
+            .toggler {
+                display: block;
+                cursor: pointer;
+            }
+        }
+
+        ul {
+            position: absolute;
+            background-color: #{$white-color};
+            top: 85%;
+            text-align: center;
+            width: 86%;
+            z-index: 1;
+            max-height: 0;
+            overflow: hidden;
+            flex-direction: column;
+            transition: .5s ease-in-out;
+
+            li {
+                margin: 5px 0;
+            }
+
+            li:first-child {
+                padding-top: 16px;
+            }
+
+            li:last-child {
+                padding-bottom: 16px;
+            }
+
+            a {
+                color: #{$black-color};
+            }
+        }
+    }
+
+    #signupmodal {
+        form {
+            width: 85%;
+
+            .names {
+                input {
+                    width: 180px;
+                }
+            }
+
+            .email {
+                width: 380px;
+            }
+        }
+
+        .verifyEmailModal,
+        .error {
+            width: 70%;
+        }
+    }
+
+    #signupmodal {
+        .loaderContainer {
+
+            .loadingGif {
+                width: 80%;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+
+    .step-timeline {
+
+        .step-container {
+            width: 100%;
+            padding: 10px 25px 10px 80px;
+        }
+
+        &::after {
+            left: 31px;
+        }
+    }
+
+    .hero {
+
+        &-content {
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .container {
+            padding: 0 10px;
+        }
+    }
+
+    #counter {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 50px;
+
+        .numanddesc {
+
+            div {
+
+                span {
+                    font-size: 18px;
+                }
+
+                h3 {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+
+    #signupmodal {
+        form {
+            padding: 3rem 1rem;
+
+            .names {
+                flex-direction: column;
+                width: 100%;
+
+                input {
+                    width: 100%;
+                }
+            }
+
+            .email {
+                width: 100%;
+            }
+        }
+
+        .verifyEmailModal,
+        .error {
+            width: 90%;
+        }
+
+        .loadingGif {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 375px) {
+    #features {
+        .featuresContainer {
+            width: 98%;
+
+            .feature {
+                h3 {
+                    font-size: 16px;
+                }
+
+                i {
+                    padding: 5px;
+                }
+            }
+
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 25px;
+        }
+    }
+}

@@ -1,0 +1,130 @@
+@keyframes movedown {
+    0% {
+        opacity: 1;
+        transform: translateY(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes moveline {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: 100%;
+    }
+}
+
+#timeSection {
+    h1 {
+        @include headingFonts
+    }
+
+    .timeSectionParagraph {
+        @include centerParagraph;
+    }
+
+    background-color: #f1f1f1;
+    padding: 5rem 0;
+}
+
+.step-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 10px auto;
+    z-index: 1;
+
+    .step-container {
+        padding: 10px 50px;
+        position: relative;
+        width: 50%;
+        animation: movedown 1s linear forwards;
+        opacity: 0;
+
+        &:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        &:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        &:nth-child(3) {
+            animation-delay: 3s;
+        }
+
+        &:nth-child(4) {
+            animation-delay: 5s;
+        }
+
+        .number {
+            color: #{$black-color};
+            position: absolute;
+            border-radius: 10px;
+            height: 40px;
+            width: 40px;
+            top: 30px;
+            right: -20px;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $primary;
+            font-size: 20px;
+
+            i {
+                color: $white-color;
+            }
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 5px;
+        height: 100%;
+        background-color: #{$lightBlue};
+        top: 0;
+        left: 50%;
+        margin-left: -3px;
+        z-index: -1;
+        animation: moveline 6s linear forwards;
+    }
+
+    .text-box {
+        padding: 20px 30px;
+        background-color: #{$primary};
+        position: relative;
+        border-radius: 7px;
+        color: #{$white-color};
+    }
+
+    .left-container {
+        left: 0;
+    }
+
+    .right-container {
+        left: 50%;
+
+        .number {
+            left: -20px;
+        }
+    }
+
+    .right-container-arrow {
+        @include right-and-left-container-arrow;
+        border-right: 15px solid #{$primary};
+        left: -15px;
+    }
+
+    .left-container-arrow {
+        @include right-and-left-container-arrow;
+        border-left: 15px solid #{$primary};
+        right: -15px;
+    }
+}

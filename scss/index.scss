@@ -1,0 +1,19 @@
+// Base
+@import "./base/config";
+@import "./base/utilities";
+
+// components
+@import "./components/buttons";
+@import "./components/signupmodal";
+@import "./components/coursemodal";
+
+// Sections
+@import "./sections/hero";
+@import "./sections/timeline";
+@import "./sections/features";
+@import "./sections/courses";
+@import "./sections/counter";
+@import "./sections/footer";
+
+// Media query
+@import "./base/mediaquery";

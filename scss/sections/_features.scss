@@ -1,0 +1,45 @@
+#features {
+    h1 {
+        @include headingFonts
+    }
+
+    .featuresParagraph {
+        @include centerParagraph;
+        color: #616161;
+    }
+
+    .featuresContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 10px 5rem;
+        gap: 2rem;
+        width: 80%;
+        margin: 0 auto;
+
+        p {
+            color: #616161;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+
+            h3 {
+                font-size: 20px;
+                color: #00274e;
+            }
+
+            i {
+                font-size: 1.8rem;
+                color: #{$primary};
+                padding: 8px;
+                border-radius: 5px;
+                color: #ffffff;
+                background-color: #{$secondary};
+            }
+        }
+    }
+}
