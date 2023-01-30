@@ -956,7 +956,7 @@ footer .contacts {
 @media screen and (max-width: 600px) {
   .hero nav {
     position: relative;
-    padding: 30px;
+    padding: 20px 30px;
     width: 100%;
   }
   .hero nav button {
@@ -968,10 +968,13 @@ footer .contacts {
   }
   .hero ul {
     position: absolute;
+    left: 0;
+    right: 0;
     background-color: #fff;
     top: 85%;
     text-align: center;
-    width: 86%;
+    width: 90%;
+    margin: 0 auto;
     z-index: 1;
     max-height: 0;
     overflow: hidden;
