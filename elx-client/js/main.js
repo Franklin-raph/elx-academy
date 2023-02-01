@@ -8,11 +8,85 @@ const getAllCourses = async () => {
   const response = await fetch("http://localhost:8000/api/v1/courses");
   const data = await response.json();
   if (response.ok) {
+    localStorage.setItem("courses", JSON.stringify(data));
     console.log(data);
   }
 };
 
 document.addEventListener("DOMContentLoaded", getAllCourses());
+
+// import { courseCarousel } from "./courseCarousel.js";
+
+let courseCarousel = JSON.parse(localStorage.getItem("courses"));
+console.log(courseCarousel);
+courseCarousel.forEach((course) => {
+  const courses = document.createElement("div");
+  courses.classList.add("course");
+  courses.innerHTML += `
+          <img src=${course.img} alt="" />
+          <div class="courseInfo">
+            <p>${course.title}</p>
+            <div class="courseFormat">
+              <ul>
+                <li>
+                  <i class="ri-checkbox-circle-line"></i>
+                  <span>${course.mode}</span>
+                </li>
+                <li>
+                  <i class="ri-checkbox-circle-line"></i>
+                  <span>${course.duration}</span>
+                </li>
+                <li>
+                  <i class="ri-checkbox-circle-line"></i>
+                  <span>${course.lessonDuration}</span>
+                </li>
+              </ul>
+              <p class="level">${course.level}</p>
+            </div>
+            <div class="courseFooter">
+              <div>
+                <button class="viewCourse" onclick="getCourseDetails(${course.courseId})">view course</button>
+              </div>
+              <p class="price">${course.price}</p>
+            </div>
+          </div>
+  `;
+  document.querySelector(".courseCards").appendChild(courses);
+});
+
+async function getCourseDetails(courseId) {
+  const response = await fetch(`http://localhost:8000/api/v1/course/${courseId}`);
+  const data = await response.json();
+  if (response.ok) {
+    console.log(data);
+    courseModal.classList.add("showModal");
+    courseModal.innerHTML = `
+    <div class="courseInfomation">
+            <i class="ri-close-circle-line closeModal"></i>
+            <h3>${data.title}</h3>
+            <p>${data.description}</p>
+            <div class="courseFormat">
+                <ul>
+                    <li>
+                        <i class="ri-checkbox-circle-line"></i>
+                        <span>${data.duration}</span>
+                    </li>
+                    <li>
+                        <i class="ri-checkbox-circle-line"></i>
+                        <span>${data.lessonDuration}</span>
+                    </li>
+                    <li>
+                        <i class="ri-checkbox-circle-line"></i>
+                        <span>${data.mode}</span>
+                    </li>
+                </ul>
+                <p class="level">${data.level}</p>
+            </div>
+            <button><a href="https://paystack.com/pay/yxrq24ctfo">Pay</a></button>
+        </div>
+    `;
+  }
+}
 
 function toggleNav() {
   navLinks.classList.toggle("showNav");
@@ -145,38 +219,37 @@ signUpModal.addEventListener("click", (e) => {
   }
 });
 
-const viewBtns = document.querySelectorAll(".viewCourse");
-viewBtns.forEach((course) =>
-  course.addEventListener("click", () => {
-    courseModal.classList.add("showModal");
-    let courseID = 1;
-    courseModal.innerHTML = `
-    <div class="courseInfomation">
-            <i class="ri-close-circle-line closeModal"></i>
-            <h3>Front End Web Development</h3>
-            <p>Course Description</p>
-            <div class="courseFormat">
-                <ul>
-                    <li>
-                        <i class="ri-checkbox-circle-line"></i>
-                        <span>HTML</span>
-                    </li>
-                    <li>
-                        <i class="ri-checkbox-circle-line"></i>
-                        <span>CSS</span>
-                    </li>
-                    <li>
-                        <i class="ri-checkbox-circle-line"></i>
-                        <span>JavaScript</span>
-                    </li>
-                </ul>
-                <p class="level">Newbie</p>
-            </div>
-            <button><a href="https://paystack.com/pay/yxrq24ctfo">Pay</a></button>
-        </div>
-    `;
-  })
-);
+// const viewBtns = document.querySelectorAll(".viewCourse");
+// viewBtns.forEach((course) =>
+//   course.addEventListener("click", () => {
+//     courseModal.classList.add("showModal");
+//     courseModal.innerHTML = `
+//     <div class="courseInfomation">
+//             <i class="ri-close-circle-line closeModal"></i>
+//             <h3>Front End Web Development</h3>
+//             <p>Course Description</p>
+//             <div class="courseFormat">
+//                 <ul>
+//                     <li>
+//                         <i class="ri-checkbox-circle-line"></i>
+//                         <span>HTML</span>
+//                     </li>
+//                     <li>
+//                         <i class="ri-checkbox-circle-line"></i>
+//                         <span>CSS</span>
+//                     </li>
+//                     <li>
+//                         <i class="ri-checkbox-circle-line"></i>
+//                         <span>JavaScript</span>
+//                     </li>
+//                 </ul>
+//                 <p class="level">Newbie</p>
+//             </div>
+//             <button><a href="https://paystack.com/pay/yxrq24ctfo">Pay</a></button>
+//         </div>
+//     `;
+//   })
+// );
 
 courseModal.addEventListener("click", (e) => {
   if (e.target.classList.contains("closeModal")) {
