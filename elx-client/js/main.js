@@ -5,7 +5,7 @@ const navLinks = document.querySelector(".hero ul");
 const courseModal = document.querySelector("#courseModal");
 
 const getAllCourses = async () => {
-  const response = await fetch("http://localhost:8000/api/v1/courses");
+  const response = await fetch("https://elx-academy-server.cyclic.app/api/v1/courses");
   const data = await response.json();
   if (response.ok) {
     localStorage.setItem("courses", JSON.stringify(data));
@@ -55,7 +55,7 @@ courseCarousel.forEach((course) => {
 });
 
 async function getCourseDetails(courseId) {
-  const response = await fetch(`http://localhost:8000/api/v1/course/${courseId}`);
+  const response = await fetch(`https://elx-academy-server.cyclic.app/api/v1/course/${courseId}`);
   const data = await response.json();
   if (response.ok) {
     console.log(data);
@@ -181,7 +181,7 @@ form.addEventListener("submit", function (e) {
 });
 
 async function signUp(userData) {
-  const response = await fetch("http://localhost:8000/api/v1/registerStudent/", {
+  const response = await fetch("https://elx-academy-server.cyclic.app/api/v1/registerStudent/", {
     method: "POST",
     body: JSON.stringify(userData),
     headers: {
