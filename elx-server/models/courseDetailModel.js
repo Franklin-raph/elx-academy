@@ -30,6 +30,9 @@ const CourseSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    paystackLink: {
+      type: String,
+    },
     courseId: {
       type: String,
     },

@@ -5,24 +5,13 @@ const navLinks = document.querySelector(".hero ul");
 const courseModal = document.querySelector("#courseModal");
 
 const getAllCourses = async () => {
-  const response = await fetch("https://elx-academy-server.cyclic.app/api/v1/courses");
+  const response = await fetch("https://elx-server.onrender.com/api/v1/courses");
   const data = await response.json();
   if (response.ok) {
-    localStorage.setItem("courses", JSON.stringify(data));
-    console.log(data);
-  }
-};
-
-document.addEventListener("DOMContentLoaded", getAllCourses());
-
-// import { courseCarousel } from "./courseCarousel.js";
-
-let courseCarousel = JSON.parse(localStorage.getItem("courses"));
-console.log(courseCarousel);
-courseCarousel.forEach((course) => {
-  const courses = document.createElement("div");
-  courses.classList.add("course");
-  courses.innerHTML += `
+    data.forEach((course) => {
+      const courses = document.createElement("div");
+      courses.classList.add("course");
+      courses.innerHTML += `
           <img src=${course.img} alt="" />
           <div class="courseInfo">
             <p>${course.title}</p>
@@ -51,11 +40,15 @@ courseCarousel.forEach((course) => {
             </div>
           </div>
   `;
-  document.querySelector(".courseCards").appendChild(courses);
-});
+      document.querySelector(".courseCards").appendChild(courses);
+    });
+  }
+};
+
+document.addEventListener("DOMContentLoaded", getAllCourses());
 
 async function getCourseDetails(courseId) {
-  const response = await fetch(`https://elx-academy-server.cyclic.app/api/v1/course/${courseId}`);
+  const response = await fetch(`https://elx-server.onrender.com/api/v1/course/${courseId}`);
   const data = await response.json();
   if (response.ok) {
     console.log(data);
@@ -181,7 +174,7 @@ form.addEventListener("submit", function (e) {
 });
 
 async function signUp(userData) {
-  const response = await fetch("https://elx-academy-server.cyclic.app/api/v1/registerStudent/", {
+  const response = await fetch("https://elx-server.onrender.com/api/v1/registerStudent/", {
     method: "POST",
     body: JSON.stringify(userData),
     headers: {
