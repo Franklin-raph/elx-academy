@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5500", "https://elx-server.onrender.com"],
+    origin: ["http://localhost:5500", "https://elx-server.onrender.com", "https://elx-academy.netlify.app/"],
     default: "http://localhost:8000",
     credentials: true,
   })
