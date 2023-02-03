@@ -4,7 +4,7 @@ async function loginAdmin(e) {
   const adminData = {
     password: e.target["password"].value,
   };
-  const response = await fetch("http://localhost:8000/api/v1/loginAdmin", {
+  const response = await fetch("https://elx-server.onrender.com/api/v1/loginAdmin", {
     method: "POST",
     body: JSON.stringify(adminData),
     headers: {
@@ -14,5 +14,11 @@ async function loginAdmin(e) {
   });
 
   const data = await response.json();
-  console.log(data);
+  if (response.ok) {
+    localStorage.setItem("admin", data.msg);
+    location.assign("./elx-adminpanel.html");
+  }
 }
+
+console.log(Cookies.get("adminSecret"), "iuy");
+// IoaBMW,wa5782p.

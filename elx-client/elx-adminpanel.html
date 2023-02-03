@@ -36,6 +36,9 @@
         gap: 10px;
         margin: 10px 0;
         cursor: pointer;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 2px 7px;
       }
       .offcanvas-body button p {
         margin-bottom: 0;
@@ -77,6 +80,10 @@
         <button>
           <i class="ri-draft-fill"></i>
           <p>Register a course</p>
+        </button>
+        <button id="logout">
+          <i class="ri-draft-fill"></i>
+          <p>Logout</p>
         </button>
       </div>
     </div>
@@ -128,6 +135,7 @@
       crossorigin="anonymous"
     ></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <script src="./js/adminClient.js"></script>
   </body>
 </html>

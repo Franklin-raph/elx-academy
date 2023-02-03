@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", function () {
+  if (!localStorage.getItem("admin")) {
+    location.assign("./elx-adminlogin.html");
+  }
+});
+if (localStorage.getItem("admin")) {
+  //   location.href = "./elx-adminpanel.html";
+}
+
 const getAllStudents = async () => {
   const response = await fetch("https://elx-server.onrender.com/api/v1/courses", {
     method: "GET",
@@ -31,7 +40,11 @@ async function postCourse(e) {
   });
 
   const data = await response.json();
-  console.log(data);
-
-  console.log(courseData);
 }
+
+document.getElementById("logout").addEventListener("click", function () {
+  localStorage.removeItem("admin");
+  location.assign("./elx-adminlogin.html");
+});
+
+console.log(Cookies.get("adminSecret"), "iuy");
