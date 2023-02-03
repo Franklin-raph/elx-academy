@@ -1,5 +1,6 @@
 const loginAdminForm = document.querySelector("form").addEventListener("submit", loginAdmin);
 async function loginAdmin(e) {
+  document.querySelector(".loaderContainer").style.display = "flex";
   e.preventDefault();
   const adminData = {
     password: e.target["password"].value,
@@ -14,6 +15,21 @@ async function loginAdmin(e) {
   });
 
   const data = await response.json();
+  if (!response.ok) {
+    document.querySelector(".loaderContainer").style.display = "none";
+    const alertText = document.createElement("p");
+    alertText.textContent = data.msg;
+    console.log(alertText);
+    alertText.classList.add("alert");
+    alertText.classList.add("alert-danger");
+    document.querySelector(".loginAdminForm").prepend(alertText);
+
+    setTimeout(() => {
+      alertText.remove();
+    }, 3000);
+    console.log(data);
+  }
+
   if (response.ok) {
     localStorage.setItem("admin", data.msg);
     location.assign("./elx-adminpanel.html");

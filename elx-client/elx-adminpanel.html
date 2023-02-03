@@ -16,15 +16,13 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
     <style>
       * {
-        font-family: "Poppins", sans-serif;
+        font-family: "Poppins";
       }
       i {
         font-size: 22px;
         cursor: pointer;
       }
-      .offcanvas {
-        /* width: 20% !important; */
-      }
+
       .offcanvas-body {
         display: flex;
         flex-direction: column;
@@ -45,6 +43,9 @@
       }
       .offcanvas-header {
         border-bottom: 1px solid #eee;
+      }
+      .registerCourseForm {
+        display: none;
       }
     </style>
   </head>
@@ -73,11 +74,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <button>
+        <button class="viewStudentButton" data-bs-dismiss="offcanvas">
           <i class="ri-group-fill"></i>
           <p>View all Students</p>
         </button>
-        <button>
+        <button class="registerStudentButton" data-bs-dismiss="offcanvas">
           <i class="ri-draft-fill"></i>
           <p>Register a course</p>
         </button>
@@ -92,27 +93,27 @@
       <h2 class="pb-3 text-center">Course Registeration Form</h2>
       <div class="mb-3">
         <label class="form-label">Course Title</label>
-        <input type="text" class="form-control" name="title" placeholder="Front End Web Development" />
+        <input type="text" class="form-control" required name="title" placeholder="Front End Web Development" />
       </div>
       <div class="mb-3">
         <label class="form-label">Course Description</label>
-        <textarea class="form-control" name="description" rows="3"></textarea>
+        <textarea class="form-control" required name="description" rows="3"></textarea>
       </div>
       <div class="mb-3">
         <label class="form-label">Course Duration</label>
-        <input type="text" class="form-control" name="duration" placeholder="8 weeks" />
+        <input type="text" class="form-control" required name="duration" placeholder="8 weeks" />
       </div>
       <div class="mb-3">
         <label class="form-label">Course Mode</label>
-        <input type="text" class="form-control" name="mode" placeholder="Online" />
+        <input type="text" class="form-control" required name="mode" placeholder="Online" />
       </div>
       <div class="mb-3">
         <label class="form-label">Lesson Duration</label>
-        <input type="text" class="form-control" name="lessonDuration" placeholder="2 Hours per class" />
+        <input type="text" class="form-control" required name="lessonDuration" placeholder="2 Hours per class" />
       </div>
       <div class="mb-3">
         <label class="form-label">Course Price</label>
-        <input type="text" class="form-control" name="price" placeholder="#120,000" />
+        <input type="text" class="form-control" required name="price" placeholder="#120,000" />
       </div>
       <div class="mb-3">
         <label class="form-label">Course Level</label>
@@ -125,10 +126,25 @@
       </div>
       <div class="mb-3">
         <label class="form-label">Pay Stack Link</label>
-        <input type="text" name="paystackLink" class="form-control" placeholder="https://www.paystack.com/" />
+        <input type="text" name="paystackLink" required class="form-control" placeholder="https://www.paystack.com/" />
       </div>
       <input type="submit" class="btn btn-success" value="Submit" />
     </form>
+
+    <div class="container studentTable">
+      <h2 class="text-center mt-5 mb-4">All Students</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Track</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

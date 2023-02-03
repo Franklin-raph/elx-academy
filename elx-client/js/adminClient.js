@@ -1,23 +1,39 @@
-document.addEventListener("DOMContentLoaded", function () {
-  if (!localStorage.getItem("admin")) {
-    location.assign("./elx-adminlogin.html");
-  }
-});
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+    if (!localStorage.getItem("admin")) {
+      location.assign("./elx-adminlogin.html");
+    }
+  },
+  getAllCourses(),
+  getAllStudents()
+);
 if (localStorage.getItem("admin")) {
   //   location.href = "./elx-adminpanel.html";
 }
 
-const getAllStudents = async () => {
-  const response = await fetch("https://elx-server.onrender.com/api/v1/courses", {
-    method: "GET",
-  });
+async function getAllCourses() {
+  const response = await fetch("https://elx-server.onrender.com/api/v1/courses");
   const data = await response.json();
   console.log(data);
-};
+}
 
-getAllStudents();
+async function getAllStudents() {
+  const response = await fetch("https://elx-server.onrender.com/api/v1/students");
+  const data = await response.json();
+  data.forEach((student) => {
+    const students = document.createElement("tr");
+    students.innerHTML = `
+        <td>${student.firstName}</td>
+        <td>${student.lastName}</td>
+        <td>${student.learningTrack}</td>
+    `;
+    document.querySelector("tbody").appendChild(students);
+  });
+  console.log(data);
+}
 
-const registerCourseForm = document.querySelector("form").addEventListener("submit", postCourse);
+document.querySelector("form").addEventListener("submit", postCourse);
 
 async function postCourse(e) {
   e.preventDefault();
@@ -47,4 +63,14 @@ document.getElementById("logout").addEventListener("click", function () {
   location.assign("./elx-adminlogin.html");
 });
 
-console.log(Cookies.get("adminSecret"), "iuy");
+const studentTable = document.querySelector(".studentTable");
+const registerCourseForm = document.querySelector(".registerCourseForm");
+document.querySelector(".viewStudentButton").addEventListener("click", () => {
+  studentTable.style.display = "block";
+  registerCourseForm.style.display = "none";
+});
+
+document.querySelector(".registerStudentButton").addEventListener("click", () => {
+  studentTable.style.display = "none";
+  registerCourseForm.style.display = "block";
+});

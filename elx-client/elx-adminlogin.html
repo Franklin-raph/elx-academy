@@ -16,6 +16,9 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
     <!-- https://www.youtube.com/watch?v=Y08zSfX8riU -->
     <style>
+      * {
+        font-family: "Poppins";
+      }
       form {
         width: 50%;
         justify-content: center;
@@ -30,6 +33,22 @@
       }
       .ri-key-fill {
         font-size: 32px;
+      }
+
+      .loaderContainer {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 100vw;
+        height: 100vh;
+        padding-top: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: none;
       }
 
       @media screen and (max-width: 768px) {
@@ -47,6 +66,9 @@
   </head>
 
   <body class="bg-dark text-white">
+    <div class="loaderContainer">
+      <img src="./images/loading2.gif" alt="" class="loadingGif" />
+    </div>
     <form class="d-flex justify-center items-center flex-column mx-auto loginAdminForm">
       <div class="mx-auto d-flex justify-center items-center flex-column text-center py-5">
         <h3 class="mb-4">Admin Login</h3>
@@ -58,6 +80,7 @@
           class="form-control w-75 mx-auto"
           placeholder="Admin Password"
           aria-describedby="passwordHelpBlock"
+          required
         />
         <input type="submit" class="btn btn-success mt-3 w-25 mx-auto" value="Login" />
       </div>
