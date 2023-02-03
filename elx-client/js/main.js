@@ -108,6 +108,7 @@ $(".courseSlider").slick({
   autoplay: true,
   autoplaySpeed: 2000,
   dots: true,
+  mobileFirst: true,
 
   // the magic
   responsive: [
@@ -139,6 +140,14 @@ $(".courseSlider").slick({
     },
     {
       breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 480,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
