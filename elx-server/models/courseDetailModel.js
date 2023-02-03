@@ -2,11 +2,15 @@ const mongoose = require("mongoose");
 
 const CourseSchema = mongoose.Schema(
   {
+    imageUrl: {
+      type: String,
+      // required: true,
+    },
     title: {
       type: String,
       required: true,
     },
-    lessonDuration: {
+    description: {
       type: String,
       required: true,
     },
@@ -18,7 +22,7 @@ const CourseSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    description: {
+    lessonDuration: {
       type: String,
       required: true,
     },

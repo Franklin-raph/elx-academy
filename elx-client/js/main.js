@@ -12,7 +12,7 @@ const getAllCourses = async () => {
       const courses = document.createElement("div");
       courses.classList.add("course");
       courses.innerHTML += `
-          <img src=${course.img} alt="" />
+          <img src="./images/api2.jpg" alt="" />
           <div class="courseInfo">
             <p>${course.title}</p>
             <div class="courseFormat">
