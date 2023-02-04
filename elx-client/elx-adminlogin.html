@@ -28,7 +28,7 @@
 
       .loginAdminForm .loginAdminFormDivContainer {
         border: 1px solid #eee;
-        width: 70%;
+        width: 60%;
         border-radius: 5px;
         background-color: #eee;
       }
@@ -76,15 +76,46 @@
         display: none;
       }
 
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 992px) {
         .loginAdminForm {
-          width: 75%;
+          width: 70%;
+        }
+        .loginAdminForm .loginAdminFormDivContainer {
+          width: 70%;
+        }
+        .ri-eye-off-fill,
+        .ri-eye-fill {
+          right: 60px;
         }
       }
 
-      @media screen and (max-width: 992px) {
+      @media screen and (max-width: 768px) {
         .loginAdminForm {
-          width: 100%;
+          width: 80%;
+        }
+
+        .loginAdminForm .loginAdminFormDivContainer {
+          width: 80%;
+        }
+
+        .ri-eye-off-fill,
+        .ri-eye-fill {
+          right: 50px;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .loginAdminForm {
+          width: 92%;
+        }
+
+        .loginAdminForm .loginAdminFormDivContainer {
+          width: 92%;
+        }
+
+        .ri-eye-off-fill,
+        .ri-eye-fill {
+          right: 40px;
         }
       }
     </style>
