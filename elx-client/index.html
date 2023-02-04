@@ -9,6 +9,65 @@
     <link rel="stylesheet" href="./css/slick.css" />
     <link rel="stylesheet" href="./css/slick-theme.css" />
     <link rel="stylesheet" href="./css/index.css" />
+
+    <style>
+      .navLinks li:nth-of-type(6) {
+        border: 1px solid #cacaca;
+        border-radius: 5px;
+        padding: 4px 9px;
+        cursor: pointer;
+        transition: 0.7s;
+      }
+
+      .navLinks li:nth-of-type(6):hover {
+        background-color: #f29f05;
+        transition: 0.7s;
+      }
+
+      .navLinks li:nth-of-type(6):hover a {
+        color: #fff !important;
+      }
+
+      .loaderContainer {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 100vw;
+        height: 100vh;
+        padding-top: 5rem;
+        justify-content: center;
+        align-items: center;
+        display: none;
+      }
+
+      .loaderContainer img {
+        width: 30%;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .courseInfomation button a {
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+
+      .courseInfomation button {
+        all: unset;
+        cursor: pointer;
+        padding: 4px 8px;
+        border-radius: 5px;
+        background-color: #1ac888;
+        margin-top: 10px;
+      }
+    </style>
   </head>
   <body>
     <header class="hero">
@@ -30,6 +89,7 @@
           <li><a href="#timeSection">Steps</a></li>
           <li><a href="#courses">Courses</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="./elx-adminlogin.html">Admin Login</a></li>
         </ul>
       </nav>
       <div class="container">
@@ -37,8 +97,8 @@
           <div>
             <h1>Everything you need to LEARN.</h1>
             <p class="my-1">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est eligendi tempore atque laborum. Quisquam nemo at
-              non. Corrupti, vitae dolore.
+              A Learning platform where you can acquire on-demand skills via properly-structured courses. We are enabling an
+              environment where people are qualified for the demanding market.
             </p>
             <button class="btn-primary">Learn More</button>
             <button class="btn-secondary signupBtn">Sign Up</button>
@@ -160,7 +220,11 @@
         <h1>Courses</h1>
         <p>We offer a variety of curses like Html, CSS, JavaScript, React, Python, Django, Node, Express, e.t.c</p>
       </div>
-      <div class="courseCards courseSlider">
+      <div class="loaderContainer">
+        <img src="./images/loading2.gif" alt="" class="loadingGif" />
+      </div>
+      <!-- courseSlider -->
+      <div class="courseCards">
         <!--<div class="course">
           <img src="./images/images.jfif" alt="" />
           <div class="courseInfo">

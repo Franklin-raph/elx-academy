@@ -19,17 +19,18 @@
       * {
         font-family: "Poppins";
       }
-      form {
+      .loginAdminForm {
         width: 50%;
         justify-content: center;
         align-items: center;
         height: 100vh;
       }
 
-      form div {
+      .loginAdminForm .loginAdminFormDivContainer {
         border: 1px solid #eee;
         width: 70%;
         border-radius: 5px;
+        background-color: #eee;
       }
       .ri-key-fill {
         font-size: 32px;
@@ -51,14 +52,38 @@
         display: none;
       }
 
+      .loginAdminForm .loginAdminFormDivContainer div {
+        /* background-color: red; */
+        position: relative;
+      }
+
+      .ri-eye-off-fill {
+        position: absolute;
+        bottom: 5px;
+        right: 70px;
+        font-size: 20px;
+        color: #aaa;
+        cursor: pointer;
+      }
+
+      .ri-eye-fill {
+        position: absolute;
+        bottom: 5px;
+        right: 70px;
+        font-size: 20px;
+        color: #aaa;
+        cursor: pointer;
+        display: none;
+      }
+
       @media screen and (max-width: 768px) {
-        form {
+        .loginAdminForm {
           width: 75%;
         }
       }
 
       @media screen and (max-width: 992px) {
-        form {
+        .loginAdminForm {
           width: 100%;
         }
       }
@@ -70,18 +95,26 @@
       <img src="./images/loading2.gif" alt="" class="loadingGif" />
     </div>
     <form class="d-flex justify-center items-center flex-column mx-auto loginAdminForm">
-      <div class="mx-auto d-flex justify-center items-center flex-column text-center py-5">
-        <h3 class="mb-4">Admin Login</h3>
-        <label for="inputPassword5" class="form-label"><i class="ri-key-fill"></i></label>
-        <input
-          type="password"
-          name="password"
-          id="inputPassword5"
-          class="form-control w-75 mx-auto"
-          placeholder="Admin Password"
-          aria-describedby="passwordHelpBlock"
-          required
-        />
+      <div class="mx-auto d-flex justify-center items-center flex-column text-center py-5 loginAdminFormDivContainer">
+        <h3 class="mb-4 text-dark">Admin Login</h3>
+        <label for="inputPassword5" class="form-label">
+          <img src="./images/elx acad-01.png" width="40%" alt="" class="mb-4" />
+        </label>
+        <div>
+          <input
+            type="password"
+            name="password"
+            id="inputPassword5"
+            class="form-control w-75 mx-auto"
+            placeholder="Admin Password"
+            aria-describedby="passwordHelpBlock"
+            required
+          />
+          <!-- <span class="eye" style="position: absolute"> -->
+          <i class="ri-eye-off-fill"></i>
+          <i class="ri-eye-fill"></i>
+          <!-- </span> -->
+        </div>
         <input type="submit" class="btn btn-success mt-3 w-25 mx-auto" value="Login" />
       </div>
     </form>

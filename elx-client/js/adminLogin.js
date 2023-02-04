@@ -38,3 +38,15 @@ async function loginAdmin(e) {
 
 console.log(Cookies.get("adminSecret"), "iuy");
 // IoaBMW,wa5782p.
+
+document.querySelector(".ri-eye-off-fill").addEventListener("click", function () {
+  document.querySelector("input[type=password]").type = "text";
+  document.querySelector(".ri-eye-off-fill").style.display = "none";
+  document.querySelector(".ri-eye-fill").style.display = "block";
+});
+
+document.querySelector(".ri-eye-fill").addEventListener("click", function () {
+  document.querySelector("input[type=text]").type = "password";
+  document.querySelector(".ri-eye-off-fill").style.display = "block";
+  document.querySelector(".ri-eye-fill").style.display = "none";
+});

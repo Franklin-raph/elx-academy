@@ -48,8 +48,12 @@ const getAllCourses = async () => {
 document.addEventListener("DOMContentLoaded", getAllCourses());
 
 async function getCourseDetails(courseId) {
+  document.querySelector(".loaderContainer").style.display = "flex";
   const response = await fetch(`https://elx-server.onrender.com/api/v1/course/${courseId}`);
   const data = await response.json();
+  if (response) {
+    document.querySelector(".loaderContainer").style.display = "none";
+  }
   if (response.ok) {
     console.log(data);
     courseModal.classList.add("showModal");
@@ -75,7 +79,12 @@ async function getCourseDetails(courseId) {
                 </ul>
                 <p class="level">${data.level}</p>
             </div>
-            <button><a href="https://paystack.com/pay/yxrq24ctfo">Pay</a></button>
+            <button>
+              <a href="https://paystack.com/pay/yxrq24ctfo">
+                <i class="ri-checkbox-circle-line"></i>
+                <p>${data.price}</p>
+              </a>
+            </button>
         </div>
     `;
   }

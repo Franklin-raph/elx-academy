@@ -601,7 +601,6 @@ section {
   position: absolute;
   width: 5px;
   height: 100%;
-  background-color: #cacaca71;
   top: 0;
   left: 50%;
   margin-left: -3px;
@@ -700,7 +699,6 @@ section {
   text-transform: uppercase;
   margin-bottom: 20px;
 }
-#courses
 #courses .topInfo {
   text-align: center;
 }
@@ -712,11 +710,10 @@ section {
   color: #616161;
 }
 #courses .courseCards {
-  display: grid;
+  display: flex;
   align-items: center;
   justify-content: center;
-  grid-template-columns: repeat(4, 1fr);
-  /* gap: 20px; */
+  gap: 20px;
 }
 #courses .courseCards p, #courses .courseCards li {
   color: #616161;
@@ -753,21 +750,6 @@ section {
   border-radius: 4px;
   color: #fff;
 }
-
-.viewCourse{
-  all: unset;
-  padding: 5px 10px;
-  border: 1px solid #dfdfdf;
-  cursor: pointer;
-  transition: .5s;
-}
-
-.viewCourse:hover{
-  background-color: #F29F05;
-  color: #fff;
-  transition: .5s;
-}
-
 #courses .courseCards .course .courseInfo .courseFooter {
   display: flex;
   justify-content: space-between;
@@ -785,7 +767,7 @@ section {
   grid-template-columns: repeat(4, 1fr);
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../images/images.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("/images/images.jpg");
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
@@ -892,14 +874,6 @@ footer .contacts {
   #signupmodal .loaderContainer .loadingGif {
     width: 40%;
   }
-
-  #courses .courseCards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .loaderContainer img {
-    width: 50%;
-  }
 }
 @media screen and (max-width: 700px) {
   .hero {
@@ -977,10 +951,6 @@ footer .contacts {
   #signupmodal .loaderContainer .loadingGif {
     width: 70%;
   }
-
-  .loaderContainer img {
-    width: 70%;
-  }
 }
 @media screen and (max-width: 600px) {
   .hero nav {
@@ -1038,14 +1008,6 @@ footer .contacts {
   #signupmodal .loaderContainer .loadingGif {
     width: 80%;
   }
-
-  #courses .courseCards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .loaderContainer img {
-    width: 90%;
-  }
 }
 @media screen and (max-width: 480px) {
   .step-timeline .step-container {
@@ -1090,10 +1052,6 @@ footer .contacts {
   }
   #signupmodal .loadingGif {
     width: 100%;
-  }
-
-  #courses .courseCards {
-    grid-template-columns: repeat(1, 1fr);
   }
 }
 @media screen and (max-width: 375px) {
