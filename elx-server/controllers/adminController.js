@@ -87,6 +87,30 @@ const loginAdmin = async (req, res) => {
   }
 };
 
+const courseUpdate = async (req, res) => {
+  const { courseId } = req.params;
+
+  try {
+    const updatedCourse = await Course.findOneAndUpdate({ courseId }, { ...req.body });
+
+    res.status(200).json(updatedCourse);
+  } catch (error) {
+    res.status(500).json({ msg: error.msg });
+  }
+};
+
+const courseDelete = async (req, res) => {
+  const { courseId } = req.params;
+
+  try {
+    await Course.findOneAndDelete({ courseId });
+
+    res.status(200).json({ msg: "Course Deleted Successfully", courseId });
+  } catch (error) {
+    res.status(500).json({ msg: error.msg });
+  }
+};
+
 const adminLogout = (req, res) => {
   res.cookie("adminSecret", "", { maxAge: 1 });
   return res.status(200).send({ msg: "Admin is signed out" });
@@ -97,6 +121,8 @@ module.exports = {
   getAllCourses,
   getASingleCourse,
   registerAdminPass,
+  courseUpdate,
   loginAdmin,
   adminLogout,
+  courseDelete,
 };

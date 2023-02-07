@@ -186,7 +186,6 @@ form.addEventListener("submit", function (e) {
     return;
   } else {
     loaderContainer.style.display = "flex";
-    // console.log(userData)
     signUp(userData);
   }
 });
@@ -229,38 +228,6 @@ signUpModal.addEventListener("click", (e) => {
     form.style.display = "flex";
   }
 });
-
-// const viewBtns = document.querySelectorAll(".viewCourse");
-// viewBtns.forEach((course) =>
-//   course.addEventListener("click", () => {
-//     courseModal.classList.add("showModal");
-//     courseModal.innerHTML = `
-//     <div class="courseInfomation">
-//             <i class="ri-close-circle-line closeModal"></i>
-//             <h3>Front End Web Development</h3>
-//             <p>Course Description</p>
-//             <div class="courseFormat">
-//                 <ul>
-//                     <li>
-//                         <i class="ri-checkbox-circle-line"></i>
-//                         <span>HTML</span>
-//                     </li>
-//                     <li>
-//                         <i class="ri-checkbox-circle-line"></i>
-//                         <span>CSS</span>
-//                     </li>
-//                     <li>
-//                         <i class="ri-checkbox-circle-line"></i>
-//                         <span>JavaScript</span>
-//                     </li>
-//                 </ul>
-//                 <p class="level">Newbie</p>
-//             </div>
-//             <button><a href="https://paystack.com/pay/yxrq24ctfo">Pay</a></button>
-//         </div>
-//     `;
-//   })
-// );
 
 courseModal.addEventListener("click", (e) => {
   if (e.target.classList.contains("closeModal")) {

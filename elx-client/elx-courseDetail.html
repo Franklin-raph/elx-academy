@@ -44,7 +44,7 @@
       .offcanvas-header {
         border-bottom: 1px solid #eee;
       }
-      .registerCourseForm, .allCourses {
+      .registerCourseForm {
         display: none;
       }
     </style>
@@ -52,49 +52,13 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container">
-        <a class="navbar-brand" href="#">Elx-Academy (Admin)</a>
-        <i
-          class="ri-menu-line"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasWithBothOptions"
-          aria-controls="offcanvasWithBothOptions"
-        ></i>
+        <a class="navbar-brand" href="../elx-client/elx-adminpanel.html">Elx-Academy (Admin)</a>
+        <a href="../elx-client/elx-adminpanel.html"><i class="ri-home-5-fill"></i></a>
       </div>
     </nav>
 
-    <div
-      class="offcanvas offcanvas-start"
-      data-bs-scroll="true"
-      tabindex="-1"
-      id="offcanvasWithBothOptions"
-      aria-labelledby="offcanvasWithBothOptionsLabel"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <button class="viewStudentButton" data-bs-dismiss="offcanvas">
-          <i class="ri-group-fill"></i>
-          <p>View all Students</p>
-        </button>
-        <button class="viewCoursesButton" data-bs-dismiss="offcanvas">
-          <i class="ri-book-2-fill"></i>
-          <p>View all Courses</p>
-        </button>
-        <button class="registerStudentButton" data-bs-dismiss="offcanvas">
-          <i class="ri-draft-fill"></i>
-          <p>Register a course</p>
-        </button>
-        <button id="logout">
-          <i class="ri-logout-box-line"></i>
-          <p>Logout</p>
-        </button>
-      </div>
-    </div>
-
-    <form class="container py-5 registerCourseForm">
-      <h2 class="pb-3 text-center">Course Registeration Form</h2>
+    <form class="container py-5">
+      <h2 class="pb-3 text-center">Edit COurse</h2>
       <div class="mb-3">
         <label class="form-label">Course Title</label>
         <input type="text" class="form-control" required name="title" placeholder="Front End Web Development" />
@@ -128,47 +92,26 @@
           <option value="Advanced">Advanced</option>
         </select>
       </div>
-      <div class="mb-3">
+      <div class="mb-5">
         <label class="form-label">Pay Stack Link</label>
         <input type="text" name="paystackLink" required class="form-control" placeholder="https://www.paystack.com/" />
       </div>
-      <input type="submit" class="btn btn-success" value="Submit" />
+      <input type="submit" class="btn btn-success" value="Update Course" />
+      <input type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" value="Delete Course" />
     </form>
 
-    <div class="container studentTable">
-      <h2 class="text-center mt-5 mb-4">All Students</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Track</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-
-    <div class="allCourses container py-5">
-      <h1 class="py-3 text-center">All Courses</h1>
-      <div class="row justify-content-center items-items-center coursesContainer">
-      </div>
-    </div>
-
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Launch demo modal
-    </button> -->
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Elx-Academy</h5>
+            <h5 class="modal-title" id="staticBackdropLabel">Delete Course?</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">Are you sure you want to delete this course</div>
+          <div class="modal-body">
+            Are you sure you want to delete this course
+          </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="button" class="btn btn-danger" onclick="deleteCourse()">Delete</button>
           </div>
         </div>
@@ -182,6 +125,6 @@
     ></script>
 
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-    <script src="./js/adminClient.js"></script>
+    <script src="./js/editCourse.js"></script>
   </body>
 </html>
