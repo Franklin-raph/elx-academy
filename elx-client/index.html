@@ -51,6 +51,36 @@
         transform: translate(-50%, -50%);
       }
 
+      #courseModal .courseInfomation{
+        width: 40%;
+      }
+
+      @media screen and (max-width:992px) {
+        #courseModal .courseInfomation{
+          width: 60%;
+        }
+      }
+
+      @media screen and (max-width:576px) {
+        #courseModal .courseInfomation{
+          width: 90%;
+        }
+      }
+
+      @media screen and (max-width:375px) {
+        #courseModal .courseInfomation{
+          width: 96%;
+        }
+
+        #courseModal .courseInfomation p, #courseModal .courseInfomation span{
+          font-size: 14px;
+        }
+
+        #courseModal .courseInfomation .courseFormat{
+          margin-top: 10px;
+        }
+      }
+
       .courseInfomation button a {
         color: #fff;
         display: flex;
