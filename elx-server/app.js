@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5500", "https://elx-server.onrender.com", "https://elx-academy.netlify.app"],
+    origin: ["http://localhost:5500","http://127.0.0.1:5500", "https://elx-server.onrender.com", "https://elx-academy.netlify.app"],
     default: "http://localhost:8000",
     credentials: true,
   })
@@ -20,6 +20,7 @@ app.use(
 app.use(morgan("dev"));
 app.use(cookieParser());
 
+app.use("/api/v1/facilitator", require("./routes/facilitatorRoutes"));
 app.use("/api/v1/", require("./routes/studentRoutes"));
 app.use("/api/v1/", require("./routes/adminRoutes"));
 

@@ -1,6 +1,7 @@
 const Course = require("../models/courseDetailModel");
 const AdminPass = require("../models/adminPassModel");
 const bcrypt = require("bcrypt");
+const multer = require("multer");
 
 const registerCourse = (req, res) => {
   const { title, duration, description, price, level, lessonDuration, mode, courseId, paystackLink } = req.body;

@@ -56,8 +56,8 @@
       }
 
       #courseModal .courseInfomation .courseFormat{
-          margin-top: 10px;
-        }
+        margin-top: 10px;
+      }
 
       @media screen and (max-width:992px) {
         #courseModal .courseInfomation{
@@ -130,8 +130,8 @@
               A Learning platform where you can acquire on-demand skills via properly-structured courses. We are enabling an
               environment where people are qualified for the demanding market.
             </p>
-            <button class="btn-primary">Learn More</button>
-            <button class="btn-secondary signupBtn">Sign Up</button>
+            <button class="btn-primary facilitatorSignUpBtn">Facilitator sign up</button>
+            <button class="btn-secondary signupBtn">Student sign up</button>
           </div>
           <img src="./images/teaching-img.png" />
         </div>
@@ -337,6 +337,7 @@
       </div>
       <form class="singUpForm">
         <i class="ri-close-circle-line closeModal"></i>
+        <h3 class="mb-2">Student Form</h3>
         <div class="names">
           <input type="text" name="firstName" placeholder="First Name" />
           <input type="text" name="lastName" placeholder="Last Name" />
@@ -350,6 +351,29 @@
           <option value="Cyber Security">Cyber Security</option>
           <option value="Mobile Dev">Mobile App Development</option>
           <option value="UI/UX">UI/UX Design</option>
+          <option value="Graphic/logo design">Graphic Design/Logo Design</option>
+        </select>
+        <input type="submit" value="Sign Up" class="signup" />
+      </form>
+
+      <form class="facilitatorSignUp">
+        <i class="ri-close-circle-line closeModal"></i>
+        <h3 class="mb-2">Facilitator Form</h3>
+        <div class="names">
+          <input type="text" name="firstName" placeholder="First Name" />
+          <input type="text" name="lastName" placeholder="Last Name" />
+        </div>
+        <input type="text" class="email" name="email" placeholder="Email" />
+        <select name="learningTrack" id="" class="email pass">
+          <option value="">-- Select a track --</option>
+          <option value="Front End">Front End Web Development</option>
+          <option value="Back End">Back End Web Development</option>
+          <option value="Full Stack">Full Stack Web Development</option>
+          <option value="Cyber Security">Cyber Security</option>
+          <option value="Mobile Dev">Mobile App Development</option>
+          <option value="UI/UX">UI/UX Design</option>
+          <option value="Data Scientist">Data Scientist</option>
+          <option value="Data Analyst">Data Analyst</option>
           <option value="Graphic/logo design">Graphic Design/Logo Design</option>
         </select>
         <input type="submit" value="Sign Up" class="signup" />

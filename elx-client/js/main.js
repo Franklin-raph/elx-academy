@@ -97,7 +97,14 @@ function toggleNav() {
 document.querySelector(".signupBtn").addEventListener("click", () => {
   signUpModal.classList.add("showModal");
   document.querySelector(".singUpForm").style.display = "flex";
+  document.querySelector(".facilitatorSignUp").style.display = "none"
 });
+
+document.querySelector(".facilitatorSignUpBtn").addEventListener('click', () => {
+  signUpModal.classList.add("showModal");
+  document.querySelector(".singUpForm").style.display = "none";
+  document.querySelector(".facilitatorSignUp").style.display = "flex"
+})
 
 document.querySelectorAll(".closeModal").forEach((closemodalIcon) => {
   closemodalIcon.addEventListener("click", () => {
@@ -171,8 +178,13 @@ $(".counter").counterUp({
   time: 5000,
 });
 
-const form = document.querySelector(".singUpForm");
-form.addEventListener("submit", function (e) {
+const facilitatorSignUpForm = document.querySelector(".facilitatorSignUp")
+const studentSignUpForm = document.querySelector(".singUpForm")
+
+facilitatorSignUpForm.addEventListener("submit", validateForms)
+studentSignUpForm.addEventListener("submit", validateForms)
+
+function validateForms(e){
   e.preventDefault();
   const userData = {
     firstName: e.target["firstName"].value,
@@ -186,12 +198,26 @@ form.addEventListener("submit", function (e) {
     return;
   } else {
     loaderContainer.style.display = "flex";
-    signUp(userData);
-  }
-});
 
-async function signUp(userData) {
-  const response = await fetch("https://elx-server.onrender.com/api/v1/registerStudent/", {
+    if(facilitatorSignUpForm.style.display === "none"){
+      signUp(userData, 'https://elx-server.onrender.com/api/v1/registerStudent/')
+      return
+    }
+
+    if(studentSignUpForm.style.display === "none"){
+      signUp(userData, 'https://elx-server.onrender.com/api/v1/facilitator/registerFacilitator')
+      return
+    }
+  }
+}
+
+// studentSignUpForm.addEventListener("submit", function (e) {
+  
+// });
+
+async function signUp(userData, url) {
+  console.log(userData)
+  const response = await fetch(url, {
     method: "POST",
     body: JSON.stringify(userData),
     headers: {
@@ -202,8 +228,16 @@ async function signUp(userData) {
   if (response.ok) {
     document.querySelector(".verifyEmailModal").style.display = "flex";
     loaderContainer.style.display = "none";
-    form.reset();
-    form.style.display = "none";
+
+    if(facilitatorSignUpForm.style.display === "none"){
+      studentSignUpForm.reset();
+      studentSignUpForm.style.display = "none"
+    }
+
+    if(document.querySelector(".singUpForm").style.display === "none"){
+      facilitatorSignUpForm.reset();
+      facilitatorSignUpForm.style.display = "none"
+    }
   } else {
     loaderContainer.style.display = "none";
     errorMessage.style.display = "flex";
@@ -225,7 +259,7 @@ signUpModal.addEventListener("click", (e) => {
   if (e.target.classList.contains("closeEmailVerificationModal")) {
     signUpModal.classList.remove("showModal");
     document.querySelector(".verifyEmailModal").style.display = "none";
-    form.style.display = "flex";
+    // form.style.display = "flex";
   }
 });
 
