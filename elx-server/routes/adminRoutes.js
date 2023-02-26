@@ -1,4 +1,5 @@
 const express = require("express");
+const upload = require('../controllers/multer')
 const router = express.Router();
 const {
   registerCourse,
@@ -11,7 +12,7 @@ const {
   courseDelete,
 } = require("../controllers/adminController");
 
-router.post("/registerCourse", registerCourse);
+router.post("/registerCourse", upload.single('image'), registerCourse);
 router.get("/courses", getAllCourses);
 router.get("/course/:courseId", getASingleCourse);
 router.post("/registerAdminPassword", registerAdminPass);

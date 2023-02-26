@@ -1,10 +1,14 @@
 const Course = require("../models/courseDetailModel");
 const AdminPass = require("../models/adminPassModel");
 const bcrypt = require("bcrypt");
-const multer = require("multer");
+const cloudinary = require("../config/cloudinary")
+require("dotenv").config();
 
-const registerCourse = (req, res) => {
+const registerCourse = async (req, res) => {
   const { title, duration, description, price, level, lessonDuration, mode, courseId, paystackLink } = req.body;
+
+  const result = await cloudinary.uploader.upload(req.file.path)
+
   try {
     if (!title || !duration || !description || !price || !level || !lessonDuration || !mode) {
       res.status(400).json({ msg: "Please Fill in all fields" });
@@ -21,6 +25,8 @@ const registerCourse = (req, res) => {
         mode,
         courseId: Date.now(),
         paystackLink,
+        coursePhoto: result.secure_url,
+        cloudinary_id: result.public_id
       });
       course.save();
       res.status(201).json(course);

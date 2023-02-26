@@ -48,8 +48,33 @@ async function getAllStudents() {
 
 document.querySelector("form").addEventListener("submit", postCourse);
 
+let imageUrl = null
+function encodeImageFileAsURL(element) {
+  let file = element.files[0];
+  let reader = new FileReader();
+  reader.onloadend = function() {
+    imageUrl = reader.result
+    // document.write('RESULT: ', reader.result);
+  }
+  reader.readAsDataURL(file);
+}
+
+// console.log(imageUrl)
+
 async function postCourse(e) {
   e.preventDefault();
+  
+  // const formData = new FormData()
+  // formData.append('title', e.target["title"].value)
+  // formData.append('description', e.target["description"].value)
+  // formData.append('duration', e.target["duration"].value)
+  // formData.append('mode', e.target["mode"].value)
+  // formData.append('lessonDuration', e.target["lessonDuration"].value)
+  // formData.append('level', e.target["level"].value)
+  // formData.append('price', e.target["price"].value)
+  // formData.append('paystackLink', e.target["paystackLink"].value)
+
+  // console.log(...formData)
   const courseData = {
     title: e.target["title"].value,
     description: e.target["description"].value,
@@ -59,6 +84,7 @@ async function postCourse(e) {
     level: e.target["level"].value,
     price: e.target["price"].value,
     paystackLink: e.target["paystackLink"].value,
+    coursePhoto:imageUrl
   };
   const response = await fetch("https://elx-server.onrender.com/api/v1/registerCourse", {
     method: "POST",
@@ -67,7 +93,7 @@ async function postCourse(e) {
       "Content-Type": "application/json",
     },
   });
-
+  console.log(response)
   const data = await response.json();
 }
 

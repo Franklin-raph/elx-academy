@@ -132,6 +132,9 @@
         <label class="form-label">Pay Stack Link</label>
         <input type="text" name="paystackLink" required class="form-control" placeholder="https://www.paystack.com/" />
       </div>
+      <div class="mb-3">
+        <input type="file" id="file" accept="image/*" onchange="encodeImageFileAsURL(this)">
+      </div>
       <input type="submit" class="btn btn-success" value="Submit" />
     </form>
 
