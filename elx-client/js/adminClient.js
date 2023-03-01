@@ -48,33 +48,38 @@ async function getAllStudents() {
 
 document.querySelector("form").addEventListener("submit", postCourse);
 
-let imageUrl = null
-function encodeImageFileAsURL(element) {
-  let file = element.files[0];
-  let reader = new FileReader();
-  reader.onloadend = function() {
-    imageUrl = reader.result
-    // document.write('RESULT: ', reader.result);
-  }
-  reader.readAsDataURL(file);
-}
+const convertBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
 
-// console.log(imageUrl)
+      fileReader.onload = () => {
+          resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+          reject(error);
+      };
+  });
+};
+
+const uploadImage = async (event) => {
+  const file = event.target.files[0];
+  const base64 = await convertBase64(file);
+  return base64
+};
+
+let img = null;
+document.querySelector('.imgInput').addEventListener("change", async (e) => {
+  // img = await uploadImage(e)
+  // uploadImage(e);
+  console.log(document.querySelector('.imgInput').value)
+});
 
 async function postCourse(e) {
   e.preventDefault();
-  
-  // const formData = new FormData()
-  // formData.append('title', e.target["title"].value)
-  // formData.append('description', e.target["description"].value)
-  // formData.append('duration', e.target["duration"].value)
-  // formData.append('mode', e.target["mode"].value)
-  // formData.append('lessonDuration', e.target["lessonDuration"].value)
-  // formData.append('level', e.target["level"].value)
-  // formData.append('price', e.target["price"].value)
-  // formData.append('paystackLink', e.target["paystackLink"].value)
-
-  // console.log(...formData)
+  // console.log(img)
+  // https://elx-server.onrender.com/api/v1/registerCourse
   const courseData = {
     title: e.target["title"].value,
     description: e.target["description"].value,
@@ -83,10 +88,9 @@ async function postCourse(e) {
     lessonDuration: e.target["lessonDuration"].value,
     level: e.target["level"].value,
     price: e.target["price"].value,
-    paystackLink: e.target["paystackLink"].value,
-    coursePhoto:imageUrl
+    paystackLink: e.target["paystackLink"].value
   };
-  const response = await fetch("https://elx-server.onrender.com/api/v1/registerCourse", {
+  const response = await fetch("http://localhost:8000/api/v1/registerCourse", {
     method: "POST",
     body: JSON.stringify(courseData),
     headers: {

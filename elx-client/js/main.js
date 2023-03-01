@@ -12,7 +12,7 @@ const getAllCourses = async () => {
       const courses = document.createElement("div");
       courses.classList.add("course");
       courses.innerHTML += `
-          <img src="./images/api2.jpg" alt="" />
+          <img src="${course.coursePhoto}" alt="" />
           <div class="courseInfo">
             <p>${course.title}</p>
             <div class="courseFormat">
@@ -184,36 +184,47 @@ const studentSignUpForm = document.querySelector(".singUpForm")
 facilitatorSignUpForm.addEventListener("submit", validateForms)
 studentSignUpForm.addEventListener("submit", validateForms)
 
+function getValue(radio){
+  console.log(radio.value)
+  if(radio.value === 'No'){
+    document.querySelector(".school").style.display = "none"
+    document.querySelector(".school").value = "None"
+  }
+
+  if(radio.value === 'Yes'){
+    document.querySelector(".school").style.display = "block"
+  }
+}
+
+
 function validateForms(e){
   e.preventDefault();
-  const userData = {
-    firstName: e.target["firstName"].value,
-    lastName: e.target["lastName"].value,
-    email: e.target["email"].value,
-    learningTrack: e.target["learningTrack"].value,
-  };
-
-  if (!userData.email || !userData.firstName || !userData.lastName || !userData.learningTrack) {
-    errorMessage.style.display = "flex";
-    return;
-  } else {
-    loaderContainer.style.display = "flex";
 
     if(facilitatorSignUpForm.style.display === "none"){
-      signUp(userData, 'https://elx-server.onrender.com/api/v1/registerStudent/')
+      const studentData = {
+        firstName: e.target["firstName"].value,
+        lastName: e.target["lastName"].value,
+        email: e.target["email"].value,
+        learningTrack: e.target["learningTrack"].value,
+        queryStudent: e.target["queryStudent"].value,
+        school: e.target["school"].value
+      };
+      signUp(studentData, 'https://elx-server.onrender.com/api/v1/registerStudent/')
       return
     }
 
     if(studentSignUpForm.style.display === "none"){
-      signUp(userData, 'https://elx-server.onrender.com/api/v1/facilitator/registerFacilitator')
+      const facilitatorData = {
+        firstName: e.target["firstName"].value,
+        lastName: e.target["lastName"].value,
+        email: e.target["email"].value,
+        learningTrack: e.target["learningTrack"].value,
+      };
+      signUp(facilitatorData, 'https://elx-server.onrender.com/api/v1/facilitator/registerFacilitator')
       return
     }
-  }
 }
 
-// studentSignUpForm.addEventListener("submit", function (e) {
-  
-// });
 
 async function signUp(userData, url) {
   console.log(userData)

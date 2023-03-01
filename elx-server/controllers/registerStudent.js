@@ -1,7 +1,7 @@
 const Student = require('../models/StudentRegisterModel')
 
 const registerStudent = (req, res) => {
-    const {firstName, lastName, email, learningTrack} = req.body
+    const {firstName, lastName, email, learningTrack, queryStudent, school} = req.body
     try {
         if(!firstName || !lastName || !email || !learningTrack){
             res.status(400).json({msg:"Please Fill in all fields"})
@@ -9,7 +9,7 @@ const registerStudent = (req, res) => {
         }else{
             // creating the user
             const user = new Student({
-                firstName, lastName, email, learningTrack
+                firstName, lastName, email, learningTrack, queryStudent, school
             })
             user.save()
             res.status(201).json(user)

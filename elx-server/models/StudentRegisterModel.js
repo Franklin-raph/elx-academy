@@ -15,6 +15,14 @@ const StudentSchema = mongoose.Schema({
     },
     learningTrack: {
         type: String
+    },
+    school: {
+        type: String,
+        required: true
+    },
+    queryStudent: {
+        type: String,
+        required: true
     }
 },{timeStapms: true})
 

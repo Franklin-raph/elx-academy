@@ -113,7 +113,7 @@
       </div>
       <div class="mb-3">
         <label class="form-label">Lesson Duration</label>
-        <input type="text" class="form-control" required name="lessonDuration" placeholder="2 Hours per class" />
+        <input type="text" class="form-control" required id="lessonDuration" name="lessonDuration" placeholder="2 Hours per class" />
       </div>
       <div class="mb-3">
         <label class="form-label">Course Price</label>
@@ -133,7 +133,7 @@
         <input type="text" name="paystackLink" required class="form-control" placeholder="https://www.paystack.com/" />
       </div>
       <div class="mb-3">
-        <input type="file" id="file" accept="image/*" onchange="encodeImageFileAsURL(this)">
+        <input type="file" id="file" accept="image/*" class="imgInput">
       </div>
       <input type="submit" class="btn btn-success" value="Submit" />
     </form>
