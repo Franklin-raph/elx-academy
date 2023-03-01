@@ -3,7 +3,7 @@ const loaderContainer = document.querySelector(".loaderContainer");
 const errorMessage = document.querySelector(".error");
 const navLinks = document.querySelector(".hero ul");
 const courseModal = document.querySelector("#courseModal");
-
+{/* <img src="${course.coursePhoto}" alt="" /> */}
 const getAllCourses = async () => {
   const response = await fetch("https://elx-server.onrender.com/api/v1/courses");
   const data = await response.json();
@@ -12,7 +12,7 @@ const getAllCourses = async () => {
       const courses = document.createElement("div");
       courses.classList.add("course");
       courses.innerHTML += `
-          <img src="${course.coursePhoto}" alt="" />
+          <img src="./images/api.jpg" />
           <div class="courseInfo">
             <p>${course.title}</p>
             <div class="courseFormat">
