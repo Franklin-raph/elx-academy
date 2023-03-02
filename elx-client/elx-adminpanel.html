@@ -44,7 +44,7 @@
       .offcanvas-header {
         border-bottom: 1px solid #eee;
       }
-      .registerCourseForm, .allCourses {
+      .registerCourseForm, .allCourses, .facilitatorTable {
         display: none;
       }
     </style>
@@ -77,6 +77,10 @@
         <button class="viewStudentButton" data-bs-dismiss="offcanvas">
           <i class="ri-group-fill"></i>
           <p>View all Students</p>
+        </button>
+        <button class="viewFacilitatorButton" data-bs-dismiss="offcanvas">
+          <i class="ri-group-fill"></i>
+          <p>View all Facilitators</p>
         </button>
         <button class="viewCoursesButton" data-bs-dismiss="offcanvas">
           <i class="ri-book-2-fill"></i>
@@ -146,9 +150,26 @@
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Track</th>
+            <th scope="col">Student</th>
+            <th scope="col">School</th>
           </tr>
         </thead>
         <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="container facilitatorTable">
+      <h2 class="text-center mt-5 mb-4">All Facilitators</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Track(s)</th>
+          </tr>
+        </thead>
+        <tbody class="facilitatorTableBody"></tbody>
       </table>
     </div>
 

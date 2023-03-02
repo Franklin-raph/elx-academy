@@ -6,7 +6,8 @@ document.addEventListener(
     }
   },
   getAllCourses(),
-  getAllStudents()
+  getAllStudents(),
+  getAllfacilitators()
 );
 if (localStorage.getItem("admin")) {
   //   location.href = "./elx-adminpanel.html";
@@ -30,7 +31,7 @@ async function getAllCourses() {
   });
   console.log(data);
 }
-
+// https://elx-server.onrender.com/api/v1/students
 async function getAllStudents() {
   const response = await fetch("https://elx-server.onrender.com/api/v1/students");
   const data = await response.json();
@@ -40,10 +41,29 @@ async function getAllStudents() {
         <td>${student.firstName}</td>
         <td>${student.lastName}</td>
         <td>${student.learningTrack}</td>
+        <td>${student.queryStudent}</td>
+        <td>${student.school}</td>
     `;
     document.querySelector("tbody").appendChild(students);
   });
   console.log(data);
+}
+// https://elx-server.onrender.com/api/v1/students
+async function getAllfacilitators() {
+  const response = await fetch("https://elx-server.onrender.com/api/v1/facilitator/facilitators");
+  const data = await response.json();
+  console.log(data)
+  data.forEach((facilitator) => {
+    const facilitators = document.createElement("tr");
+    facilitators.innerHTML = `
+        <td>${facilitator.firstName}</td>
+        <td>${facilitator.lastName}</td>
+        <td>${facilitator.email}</td>
+        <td>${facilitator.learningTrack}</td>
+    `;
+    document.querySelector(".facilitatorTableBody").appendChild(facilitators);
+    // console.log(facilitators);
+  });
 }
 
 document.querySelector("form").addEventListener("submit", postCourse);
@@ -90,7 +110,7 @@ async function postCourse(e) {
     price: e.target["price"].value,
     paystackLink: e.target["paystackLink"].value
   };
-  const response = await fetch("http://localhost:8000/api/v1/registerCourse", {
+  const response = await fetch("https://elx-server.onrender.com/api/v1/registerCourse", {
     method: "POST",
     body: JSON.stringify(courseData),
     headers: {
@@ -111,23 +131,34 @@ document.getElementById("logout").addEventListener("click", function () {
 });
 
 const studentTable = document.querySelector(".studentTable");
+const facilitatorTable = document.querySelector(".facilitatorTable");
 const registerCourseForm = document.querySelector(".registerCourseForm");
 const allCourses = document.querySelector(".allCourses");
 
 document.querySelector(".viewStudentButton").addEventListener("click", () => {
   studentTable.style.display = "block";
+  facilitatorTable.style.display = "none";
+  registerCourseForm.style.display = "none";
+  allCourses.style.display = "none";
+});
+
+document.querySelector(".viewFacilitatorButton").addEventListener("click", () => {
+  facilitatorTable.style.display = "block";
+  studentTable.style.display = "none";
   registerCourseForm.style.display = "none";
   allCourses.style.display = "none";
 });
 
 document.querySelector(".registerStudentButton").addEventListener("click", () => {
   studentTable.style.display = "none";
+  facilitatorTable.style.display = "none";
   registerCourseForm.style.display = "block";
   allCourses.style.display = "none";
 });
 
 document.querySelector(".viewCoursesButton").addEventListener("click", () => {
   studentTable.style.display = "none";
+  facilitatorTable.style.display = "none";
   registerCourseForm.style.display = "none";
   allCourses.style.display = "block";
 });

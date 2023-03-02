@@ -5,7 +5,7 @@ async function loginAdmin(e) {
   const adminData = {
     password: e.target["password"].value,
   };
-  const response = await fetch("https://elx-server.onrender.com/api/v1/loginAdmin", {
+  const response = await fetch("http://localhost:5000/api/v1/loginAdmin", {
     method: "POST",
     body: JSON.stringify(adminData),
     headers: {
@@ -13,7 +13,7 @@ async function loginAdmin(e) {
     },
     credentials: "include",
   });
-
+  // https://elx-server.onrender.com/api/v1/loginAdmin
   const data = await response.json();
   if (!response.ok) {
     document.querySelector(".loaderContainer").style.display = "none";
