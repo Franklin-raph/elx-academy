@@ -127,7 +127,7 @@ async function postCourse(e) {
   console.log(data)
   if(response.ok){
     alert("Course was successfully registered")
-    location.assign('/elx-client/elx-adminpanel.html')
+    location.assign('./elx-adminpanel.html')
   }
 }
 
