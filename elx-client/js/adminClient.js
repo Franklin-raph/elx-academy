@@ -109,7 +109,7 @@ async function postCourse(e) {
     level: e.target["level"].value,
     price: e.target["price"].value,
     paystackLink: e.target["paystackLink"].value,
-    courseImg: e.target["image"].value
+    courseImg: e.target["courseImg"].value
   };
   console.log(courseData)
   const response = await fetch("https://elx-server.onrender.com/api/v1/registerCourse", {
