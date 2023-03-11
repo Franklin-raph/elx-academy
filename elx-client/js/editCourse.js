@@ -18,6 +18,7 @@ async function getCourseDetail(courseId) {
     form["price"].value = data.price,
     form["level"].value = data.level,
     form["paystackLink"].value = data.paystackLink,
+    form["image"].value = data.image,
       console.log(data);
   }else{
     alert("Something went wrong")
