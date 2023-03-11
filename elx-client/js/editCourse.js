@@ -18,7 +18,7 @@ async function getCourseDetail(courseId) {
     form["price"].value = data.price,
     form["level"].value = data.level,
     form["paystackLink"].value = data.paystackLink,
-    form["image"].value = data.image,
+    form["courseImg"].value = data.courseImg,
       console.log(data);
   }else{
     alert("Something went wrong")
@@ -51,6 +51,7 @@ async function updateCourse(e){
     level: e.target["level"].value,
     price: e.target["price"].value,
     paystackLink: e.target["paystackLink"].value,
+    courseImg: e.target["courseImg"].value,
   };
   console.log(courseData)
   const response = await fetch(`https://elx-server.onrender.com/api/v1/courseUpdate/${courseId}`,{
