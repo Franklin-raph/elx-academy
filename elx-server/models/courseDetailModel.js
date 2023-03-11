@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const CourseSchema = mongoose.Schema(
   {
-    coursePhoto:{
+    courseImg:{
       type: String,
     },
     // cloudinary_id: {
