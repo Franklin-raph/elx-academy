@@ -9,6 +9,7 @@ const courseModal = document.querySelector("#courseModal");
 const getAllCourses = async () => {
   const response = await fetch("https://elx-server.onrender.com/api/v1/courses");
   const data = await response.json();
+  console.log(data)
   if (response.ok) {
     data.forEach((course) => {
       const courses = document.createElement("div");
@@ -59,7 +60,7 @@ async function getCourseDetails(courseId) {
     document.querySelector(".loaderContainer").style.display = "none";
   }
   if (response.ok) {
-    console.log(data);
+    console.log(data.courseImg);
     courseModal.classList.add("showModal");
     courseModal.innerHTML = `
     <div class="courseInfomation">
