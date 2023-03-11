@@ -5,12 +5,12 @@ const cloudinary = require("../config/cloudinary")
 require("dotenv").config();
 
 const registerCourse = async (req, res) => {
-  const { title, duration, description, price, level, lessonDuration, mode, courseId, paystackLink } = req.body;
+  const { title, duration, description, price, level, lessonDuration, mode, courseId, paystackLink, coursePhoto } = req.body;
 
-  const result = await cloudinary.uploader.upload(req.file.path)
+  // const result = await cloudinary.uploader.upload(req.file.path)
 
   try {
-    if (!title || !duration || !description || !price || !level || !lessonDuration || !mode) {
+    if (!title || !duration || !description || !price || !level || !lessonDuration || !mode || !paystackLink || !coursePhoto) {
       res.status(400).json({ msg: "Please Fill in all fields" });
       return;
     } else {
@@ -25,8 +25,7 @@ const registerCourse = async (req, res) => {
         mode,
         courseId: Date.now(),
         paystackLink,
-        coursePhoto: result.secure_url,
-        cloudinary_id: result.public_id
+        coursePhoto,
       });
       course.save();
       res.status(201).json(course);

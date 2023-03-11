@@ -68,37 +68,37 @@ async function getAllfacilitators() {
 
 document.querySelector("form").addEventListener("submit", postCourse);
 
-const convertBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
+// const convertBase64 = (file) => {
+//   return new Promise((resolve, reject) => {
+//       const fileReader = new FileReader();
+//       fileReader.readAsDataURL(file);
 
-      fileReader.onload = () => {
-          resolve(fileReader.result);
-      };
+//       fileReader.onload = () => {
+//           resolve(fileReader.result);
+//       };
 
-      fileReader.onerror = (error) => {
-          reject(error);
-      };
-  });
-};
+//       fileReader.onerror = (error) => {
+//           reject(error);
+//       };
+//   });
+// };
 
-const uploadImage = async (event) => {
-  const file = event.target.files[0];
-  const base64 = await convertBase64(file);
-  return base64
-};
+// const uploadImage = async (event) => {
+//   const file = event.target.files[0];
+//   const base64 = await convertBase64(file);
+//   return base64
+// };
 
-let img = null;
-document.querySelector('.imgInput').addEventListener("change", async (e) => {
-  // img = await uploadImage(e)
-  // uploadImage(e);
-  console.log(document.querySelector('.imgInput').value)
-});
+// let img = null;
+// document.querySelector('.imgInput').addEventListener("change", async (e) => {
+//   // img = await uploadImage(e)
+//   // uploadImage(e);
+//   console.log(document.querySelector('.imgInput').value)
+// });
 
 async function postCourse(e) {
   e.preventDefault();
-  // console.log(img)
+  console.log("Loading...")
   // https://elx-server.onrender.com/api/v1/registerCourse
   const courseData = {
     title: e.target["title"].value,
@@ -108,8 +108,10 @@ async function postCourse(e) {
     lessonDuration: e.target["lessonDuration"].value,
     level: e.target["level"].value,
     price: e.target["price"].value,
-    paystackLink: e.target["paystackLink"].value
+    paystackLink: e.target["paystackLink"].value,
+    coursePhoto: e.target["image"].value
   };
+  console.log(courseData)
   const response = await fetch("https://elx-server.onrender.com/api/v1/registerCourse", {
     method: "POST",
     body: JSON.stringify(courseData),
@@ -118,7 +120,15 @@ async function postCourse(e) {
     },
   });
   console.log(response)
+  if(response){
+    console.log("Responded...")
+  }
   const data = await response.json();
+  console.log(data)
+  if(response.ok){
+    alert("Course was successfully registered")
+    location.assign('/elx-client/elx-adminpanel.html')
+  }
 }
 
 function viewCourse(courseId) {

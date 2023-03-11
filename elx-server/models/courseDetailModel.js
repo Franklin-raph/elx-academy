@@ -5,9 +5,9 @@ const CourseSchema = mongoose.Schema(
     coursePhoto:{
       type: String,
     },
-    cloudinary_id: {
-      type: String,
-    },
+    // cloudinary_id: {
+    //   type: String,
+    // },
     title: {
       type: String,
       required: true,
